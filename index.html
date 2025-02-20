@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple URL Navigator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      background: #f0f0f0;
+    }
+    #container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 300px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <input type="text" id="urlInput" placeholder="Enter URL (e.g., example.com)">
+    <button onclick="goToURL()">Go</button>
+  </div>
+
+  <script>
+    function goToURL() {
+      let url = document.getElementById('urlInput').value.trim();
+
+      // If protocol is not provided, default to https://
+      if (url && !/^https?:\/\//i.test(url)) {
+        url = 'https://' + url;
+      }
+      
+      // Navigate in the same tab
+      if (url) {
+        window.location.href = url;
+      }
+    }
+  </script>
+</body>
+</html>
